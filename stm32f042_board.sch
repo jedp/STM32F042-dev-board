@@ -719,7 +719,6 @@ F 3 "~" H 4975 4375 50  0001 C CNN
 	1    4975 4375
 	1    0    0    -1  
 $EndComp
-NoConn ~ 4775 4175
 NoConn ~ 5275 4375
 NoConn ~ 5275 4475
 Text GLabel 5475 4175 2    50   Input ~ 0
@@ -849,4 +848,19 @@ Wire Wire Line
 	2775 4200 2900 4200
 Wire Wire Line
 	5100 1325 5100 1425
+$Comp
+L power:+3.3V #PWR?
+U 1 1 60535E20
+P 4675 4050
+F 0 "#PWR?" H 4675 3900 50  0001 C CNN
+F 1 "+3.3V" H 4690 4223 50  0000 C CNN
+F 2 "" H 4675 4050 50  0001 C CNN
+F 3 "" H 4675 4050 50  0001 C CNN
+	1    4675 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4675 4050 4675 4175
+Wire Wire Line
+	4675 4175 4775 4175
 $EndSCHEMATC
