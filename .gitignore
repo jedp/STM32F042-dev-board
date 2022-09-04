@@ -8,4 +8,5 @@ _autosave*
 *-bak
 *~
 
+.idea
 .DS_Store
