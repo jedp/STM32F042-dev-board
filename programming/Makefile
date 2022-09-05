@@ -14,19 +14,18 @@ LDFLAGS+=-L  $(GCCARM_ROOT)/lib/gcc/arm-none-eabi/9.3.1/
 
 OBJS=\
 	init.o \
-	main.o
+	hello.o
 
-main.elf : $(OBJS)
-	$(LD) $(OBJS) $(LDFLAGS) -lgcc -T stm32f04f6p6.ld --cref -Map main.map -nostartfiles -o main.elf
+all: hello
 
-	$(OBJCOPY) -O ihex main.elf main.hex
+%.o: %.c
+	$(CC) $(CCFLAGS) -c -o $@ $<
 
-main.o: main.c
-	$(CC) -c $(CCFLAGS) main.c -o main.o
+hello: $(OBJS)
+	$(LD) $(OBJS) $(LDFLAGS) -lgcc -T stm32f04f6p6.ld --cref -Map hello.map -nostartfiles -o hello.elf
+	$(OBJCOPY) -O ihex hello.elf hello.hex
 
-init.o: init.c
-	$(CC) -c $(CCFLAGS) init.c -o init.o
-
+.PHONY: all hello clean
 clean:
 	rm $(OBJS)
-	rm main.elf main.hex main.map
+	rm *.elf *.hex *.map

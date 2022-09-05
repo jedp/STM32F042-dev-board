@@ -124,6 +124,7 @@
  */
 
 #define REG_32(ADDR)    (*((volatile unsigned int *) (ADDR)))
+#define REG_16(ADDR)    (*((volatile unsigned int *) (ADDR)))
 
 /*
  * For register configuration, see reference manual RM0091, section 8.4.
@@ -273,6 +274,43 @@
 #define RCC_CSR         REG_32(RCC_BASE + 0x24)     // Control/status
 #define RCC_AHBRSTR     REG_32(RCC_BASE + 0x28)     // AHB peripheral reset
 #define RCC_CFGR2       REG_32(RCC_BASE + 0x2C)     // Clock configuration 2
+
+/* Timer 1. */
+
+#define TIM1_CR1	    REG_16(TIM1_BASE + 0x00)    // Control register 1
+#define TIM1_CR2	    REG_16(TIM1_BASE + 0x04)    // Control register 2
+#define TIM1_SMCR	    REG_16(TIM1_BASE + 0x08)    // Slave mode control register
+#define TIM1_DIER	    REG_16(TIM1_BASE + 0x0c)    // DMA interrupt enable
+#define TIM1_SR		    REG_16(TIM1_BASE + 0x10)    // Status register
+#define TIM1_EGR	    REG_16(TIM1_BASE + 0x14)    // Event generation
+#define TIM1_CCMR1	    REG_16(TIM1_BASE + 0x18)    // Capture/compare mode register 1
+#define TIM1_CCMR2	    REG_16(TIM1_BASE + 0x1c)    // Capture/compare mode register 2
+#define TIM1_CCER	    REG_16(TIM1_BASE + 0x20)    // Capture/compare enable register
+#define TIM1_CNT	    REG_16(TIM1_BASE + 0x24)    // Counter
+#define TIM1_PSC	    REG_16(TIM1_BASE + 0x28)    // Prescaler
+#define TIM1_ARR	    REG_16(TIM1_BASE + 0x2c)    // Auto-reload register
+#define TIM1_RCR	    REG_16(TIM1_BASE + 0x30)    // Repetition count register
+#define TIM1_CCR1	    REG_16(TIM1_BASE + 0x34)    // Capture/compare register 1
+#define TIM1_CCR2	    REG_16(TIM1_BASE + 0x38)    // Capture/compare register 2
+#define TIM1_CCR3	    REG_16(TIM1_BASE + 0x3c)    // Capture/compare register 3
+#define TIM1_CCR4	    REG_16(TIM1_BASE + 0x40)    // Capture/compare register 4
+#define TIM1_BDTR	    REG_16(TIM1_BASE + 0x44)    // Break and dead-time register
+#define TIM1_DCR	    REG_16(TIM1_BASE + 0x48)    // DMA control register
+#define TIM1_DMAR	    REG_16(TIM1_BASE + 0x4c)    // DMA address register for full transfer
+
+/* Timer 14. */
+
+#define TIM14_CR1	    REG_16(TIM1_BASE + 0x00)    // Control register 1
+#define TIM14_DIER	    REG_16(TIM1_BASE + 0x0c)    // DMA interrupt enable
+#define TIM14_SR		REG_16(TIM1_BASE + 0x10)    // Status register
+#define TIM14_EGR	    REG_16(TIM1_BASE + 0x14)    // Event generation
+#define TIM14_CCMR1	    REG_16(TIM1_BASE + 0x18)    // Capture/compare mode register 1 [alternate]
+#define TIM14_CCER	    REG_16(TIM1_BASE + 0x20)    // Capture/compare enable register
+#define TIM14_CNT	    REG_16(TIM1_BASE + 0x24)    // Counter
+#define TIM14_PSC	    REG_16(TIM1_BASE + 0x28)    // Prescaler
+#define TIM14_ARR	    REG_16(TIM1_BASE + 0x2c)    // Auto-reload register
+#define TIM14_CCR1	    REG_16(TIM1_BASE + 0x34)    // Capture/compare register 1
+#define TIM14_OR	    REG_16(TIM1_BASE + 0x50)    // Option register
 
 /* Flash registers. */
 
