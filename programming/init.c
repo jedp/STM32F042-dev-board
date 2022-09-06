@@ -14,36 +14,36 @@ extern unsigned char BSS_END;
 extern unsigned char _stack_top;
 
 /* Vectors installed at beginning of flash by the linker script. */
-const void *Vectors[] __attribute__((section(".vectors"))) = {
+const void *isr[] __attribute__((section(".vectors"))) = {
         &_stack_top,        /* Top of stack. */
-        init,               /* Reset Handler */
-        Default_Handler,    /* NMI */
-        Default_Handler,    /* Hard Fault */
-        Default_Handler,    /* MemManage */
-        Default_Handler,    /* Reserved  */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* SVC Call */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* Reserved */
-        Default_Handler,    /* PendSV */
-        Default_Handler,    /* SysTick */
+        init,               /* 0x0000 0004: Reset Handler */
+        Default_Handler,    /* 0x0000 0008: NMI (RCC clock security, RAM parity check) */
+        Default_Handler,    /* 0x0000 000c: HardFault (all classes of fault) */
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,    /* 0x0000 002c: System service call via SWI */
+        Default_Handler,
+        Default_Handler,
+        Default_Handler,    /* 0x0000 0038: Pendable request for system service */
+        Default_Handler,    /* 0x0000 003c: SysTick */
 
-        /* External interrupt handlers. */
+        /* External interrupt handlers start at 0x0000 0040. */
         Default_Handler,    /* 0: WWDG */
         Default_Handler,    /* 1: PVD and VDDIO2 supply comparator interrupt */
         Default_Handler,    /* 2: RTC */
         Default_Handler,    /* 3: FLASH */
-        Default_Handler,    /* 4: RCC */
+        Default_Handler,    /* 4: RCC_CRS */
         Default_Handler,    /* 5: EXTI0_1 */
         Default_Handler,    /* 6: EXTI2_3 */
         Default_Handler,    /* 7: EXTI4_15 */
         Default_Handler,    /* 8: TSC */
         Default_Handler,    /* 9: DMA_CH1 */
-        Default_Handler,    /* 10: DMA_CH2_3, DMA2_CH_1_2 */
+        Default_Handler,    /* 10: DMA_CH2_3, DMA2_CH1_2 */
         Default_Handler,    /* 11: DMA_CH4_5_6_7, DMA2_CH3_4_5 */
         Default_Handler,    /* 12: ADC_COMP */
         Default_Handler,    /* 13: TIM1_BRK_UP_TRG_COM */
