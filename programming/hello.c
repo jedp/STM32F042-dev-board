@@ -16,7 +16,7 @@ static void setup(void) {
     // We can now blink the LED on PB1 by toggling bit 1 on GPIOB_ODR.
 }
 
-static void delay_ms(int delay_ms) {
+static void delay_ms(int millis) {
     // Delay implemented using TIM14.
     // TIM14 is a general purpose timer with the added bonus that it consumes the least current.
     // See datasheet Table 32, Peripheral current consumption. TIM14 consumes 5.5 uA / MHz.
@@ -26,7 +26,7 @@ static void delay_ms(int delay_ms) {
 
     TIM14_SR = 0;                   // Reset status register. (Cancel UIF etc.)
     TIM14_PSC = 8 * 1000 - 1;
-    TIM14_ARR = delay_ms;
+    TIM14_ARR = millis;
     TIM14_CR1 |= BIT_0;             // Start the timer counter
     while (!(TIM14_SR & BIT_0));    // Wait until update interrupt flag is set.
 }

@@ -43,13 +43,15 @@ My oscilloscope measures VPP 3.76 to 3.80 and Freq 7.987 to 8.013 MHz.
 
 ### Delay Function using general-purpose timer.
 
-Implementation of `void delays(int ms)` using TIM14.
+Implementation of `void delay(int ms)` using TIM14.
 
 AN4776, Section 1.3.1, Timer time-base configuration, demonstrates the basic scheme of things, though as always it's a
 bit elliptical about what needs to be enabled for anything to work.
 
+Here is a complete implementation:
+
 ```
-static void delay_ms(int delay_ms) {
+static void delay_ms(int millis) {
     // Delay implemented using TIM14.
     // TIM14 is a general purpose timer with the added bonus that it consumes the least current.
     // See datasheet Table 32, Peripheral current consumption. TIM14 consumes 5.5 uA / MHz.
@@ -59,7 +61,7 @@ static void delay_ms(int delay_ms) {
 
     TIM14_SR = 0;
     TIM14_PSC = 8 * 1000 - 1;
-    TIM14_ARR = delay_ms;
+    TIM14_ARR = millis;
     TIM14_CR1 |= BIT_0;             // Start the timer counter
     while (!(TIM14_SR & BIT_0));    // While UIF not set
 }
