@@ -2,6 +2,7 @@
 fp-info-cache
 fp-lib-table
 _autosave*
+*rescue.*
 *.zip
 
 *sw[op]
