@@ -9,6 +9,8 @@ Dimensions: 1.63in (41.50mm) x 0.74 in (18.80mm); headers 0.6in (15.24mm) center
 
 USB C receptacle for USB 2.0.
 
+There is also a [Micro-USB version](https://github.com/jedp/STM32F042-dev-board/releases/tag/Micro-USB).
+
 ![Finished Board](jedboard-usbc.jpg)
 
 ![PCB Front Rendering](front.png)
